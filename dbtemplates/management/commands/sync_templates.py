@@ -5,7 +5,7 @@ from django.core.management.base import CommandError, BaseCommand
 from django.template.utils import get_app_template_dirs
 from django.template.loader import _engine_list
 try:
-    from django.utils.six import input as raw_input
+    from six import input as raw_input
 except ImportError:
     pass
 

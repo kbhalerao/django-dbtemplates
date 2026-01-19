@@ -10,7 +10,8 @@ class VersionFinder(ast.NodeVisitor):
 
     def visit_Assign(self, node):
         if node.targets[0].id == '__version__':
-            self.version = node.value.s
+            # Python 3.8+ uses Constant with .value, older used Str with .s
+            self.version = getattr(node.value, 's', None) or node.value.value
 
 
 def read(*parts):
